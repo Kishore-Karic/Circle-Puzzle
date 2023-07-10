@@ -10,6 +10,7 @@ namespace CirclePuzzle
         [SerializeField] private int zero;
 
         public static PuzzleController Instance { get; private set; }
+
         public bool TakenLeft { get; private set; } 
         public bool TakenRight { get; private set; }
         public bool AtOneEighty { get; private set; }
@@ -42,12 +43,6 @@ namespace CirclePuzzle
         public void TakenRightSlot(bool val)
         {
             TakenRight = val;
-        }
-
-        public void ResetAngleSlot()
-        {
-            AtOneEighty = false;
-            AtZero = false;
         }
 
         public void TakenOneEighty(bool val)

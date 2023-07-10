@@ -60,7 +60,7 @@ namespace CirclePuzzle
             }
         }
 
-        public void SetController(char val, CircleController _circleController, int i, Transform _left, Transform _right, Transform _center)
+        public void SetController(char val, CircleController _circleController, Transform _left, Transform _right, Transform _center)
         {
             pieceCharacter = val;
             pieceText.text = val.ToString();
@@ -72,25 +72,6 @@ namespace CirclePuzzle
             
             SetAngle();
         }
-
-        /*private void SetAnglesList(int x)
-        {
-            int tempIndex = zero;
-
-            for(int i = x; i < tempAnglesList.Count; i++)
-            {
-                anglesList.Add(tempAnglesList[i]);
-                tempIndex++;
-            }
-
-            for(int i = zero; i < x; i++)
-            {
-                anglesList.Add(tempAnglesList[i]);
-                tempIndex++;
-            }
-
-            Debug.Log("Char: " + pieceText.text + " Angle: " + anglesList[zero]);
-        }*/
 
         public void Rotate()
         {

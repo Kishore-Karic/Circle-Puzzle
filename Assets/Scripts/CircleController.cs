@@ -13,6 +13,7 @@ namespace CirclePuzzle
         [SerializeField] private List<char> innerCircleCharacters;
         [SerializeField] private Transform leftPoint, rightPoint, centerPoint;
         [SerializeField] private List<GameObject> outerCircleText;
+        [SerializeField] private UIService uiService;
 
         public float RotationAtZAxis { get; private set; }
 
@@ -36,7 +37,7 @@ namespace CirclePuzzle
 
                 Vector3 pos = transform.position + new Vector3(x, y, zero);
                 PieceController pieceController = Instantiate(piecePrefab, pos, Quaternion.identity);
-                pieceController.SetController(innerCircleCharacters[i], this, i, leftPoint, rightPoint, centerPoint);
+                pieceController.SetController(innerCircleCharacters[i], this, leftPoint, rightPoint, centerPoint);
                 OnPiecesRotate += pieceController.Rotate;
                 pieceController.gameObject.transform.SetParent(transform);
             }
@@ -69,7 +70,7 @@ namespace CirclePuzzle
                 SetCirclePosition(transform.localEulerAngles.z);
             }
 
-            if (horizontalRotation != zero && mouseDrag)
+            if (horizontalRotation != zero && mouseDrag && !uiService.DisplayInfo)
             {
                 transform.Rotate(Vector3.forward * horizontalRotation * rotateSpeed);
             }
@@ -126,7 +127,6 @@ namespace CirclePuzzle
                 transform.localEulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, oneEighty);
             }
 
-            //PuzzleController.Instance.ResetAngleSlot();
             PuzzleController.Instance.TakenZero(false);
             PuzzleController.Instance.TakenOneEighty(false);
             RotationAtZAxis = transform.localEulerAngles.z;
