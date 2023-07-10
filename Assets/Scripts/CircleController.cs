@@ -7,8 +7,8 @@ namespace CirclePuzzle
     public class CircleController : MonoBehaviour
     {
         [SerializeField] private PieceController piecePrefab;
-        [SerializeField] private float innerCircleRadius, outerCircleRadius;
-        [SerializeField] private int totalPieceCount, rotateSpeed, zero, two, thirty, sixty, ninety, oneTwenty, oneFifty, oneEighty, twoTen, twoFourty, twoSeventy, threeHundred, threeThirty;
+        [SerializeField] private float innerCircleRadius, outerCircleRadius, rotationSpeedModifier;
+        [SerializeField] private int totalPieceCount, zero, one, two, thirty, sixty, ninety, oneTwenty, oneFifty, oneEighty, twoTen, twoFourty, twoSeventy, threeHundred, threeThirty;
         [SerializeField] private int fifteen, fourtyFive, eightyFive, oneHundredFive, oneThirtyFive, oneSixtyFive, oneNinetyFive, twoTwentyFive, twoFiftyFive, twoEightyFive, threeFifteen, threeFourtyFive;
         [SerializeField] private List<char> innerCircleCharacters;
         [SerializeField] private Transform leftPoint, rightPoint, centerPoint;
@@ -17,9 +17,8 @@ namespace CirclePuzzle
 
         public float RotationAtZAxis { get; private set; }
 
-        private float horizontalRotation;
-        private bool mouseDrag;
         private event Action OnPiecesRotate;
+        private Touch screenTouch;
 
         private void Start()
         {
@@ -55,24 +54,21 @@ namespace CirclePuzzle
             }
         }
 
-        private void OnMouseDrag()
-        {
-            mouseDrag = true;
-        }
-
         void Update()
         {
-            horizontalRotation = Input.GetAxisRaw("Mouse X");
-
-            if (Input.GetMouseButtonUp(zero))
+            if(Input.touchCount == one)
             {
-                mouseDrag = false;
-                SetCirclePosition(transform.localEulerAngles.z);
-            }
+                screenTouch = Input.GetTouch(zero);
+                
+                if (screenTouch.phase == TouchPhase.Moved)
+                {
+                    transform.Rotate(Vector3.forward * screenTouch.deltaPosition.x * rotationSpeedModifier);
+                }
 
-            if (horizontalRotation != zero && mouseDrag && !uiService.DisplayInfo)
-            {
-                transform.Rotate(Vector3.forward * horizontalRotation * rotateSpeed);
+                if(screenTouch.phase == TouchPhase.Ended)
+                {
+                    SetCirclePosition(transform.localEulerAngles.z);
+                }
             }
         }
 

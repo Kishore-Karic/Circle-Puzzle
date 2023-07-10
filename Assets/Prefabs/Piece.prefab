@@ -384,8 +384,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7184789838677885227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2309693637509156868}
@@ -434,7 +434,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.7924528, g: 0.78783256, b: 0.27960128, a: 1}
+  m_Color: {r: 0.9433962, g: 0.33677548, b: 0.10145953, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -462,11 +462,11 @@ MonoBehaviour:
   pointTwo: 0.2
   pointSeven: 0.7
   pointNine: 0.9
-  atLeft: {x: -3, y: 0, z: 0}
-  atRight: {x: 3, y: 0, z: 0}
-  atZero: {x: 2, y: 0, z: 0}
-  atOneEighty: {x: -2, y: 0, z: 0}
+  atLeft: {x: -3.6, y: 0, z: 0}
+  atRight: {x: 3.6, y: 0, z: 0}
+  atZero: {x: 2.4, y: 0, z: 0}
+  atOneEighty: {x: -2.4, y: 0, z: 0}
   button: {fileID: 2187118106861995392}
-  normal: {r: 0.7921569, g: 0.7882353, b: 0.2784314, a: 1}
+  normal: {r: 0.94509804, g: 0.3372549, b: 0.101960786, a: 1}
   green: {r: 0.37647063, g: 0.7725491, b: 0.31764707, a: 1}
   spriteRenderer: {fileID: 1437156044541392002}
